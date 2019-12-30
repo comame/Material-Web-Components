@@ -1,12 +1,13 @@
 /*
-    <material-input
-        placeholder=string
-        id=string
-        error=string
-    >
+    <material-input placeholder=string id=string error=string>
 */
 
-const xyz_comame_scriptFilePath = 'https://comame.xyz/assets/script/material-component/'
+let xyz_comame_scriptFilePath
+for(const el of document.getElementsByTagName('script')) {
+    if (el.src.endsWith('/components.js')) {
+        xyz_comame_scriptFilePath = el.src.split('/').slice(0, -1).join('/') + '/'
+    }
+}
 
 class MaterialInputElement extends HTMLElement {
     constructor() {
@@ -67,7 +68,10 @@ class MaterialInputElement extends HTMLElement {
                 break
             case 'value':
                 this.value = newValue
-            break
+                break
+            case 'error':
+                this.error = newValue
+                break
         }
     }
 
@@ -76,18 +80,19 @@ class MaterialInputElement extends HTMLElement {
     }
     set value(v) {
         this.shadowRoot.getElementById('input').value = v
-        if (v != '') {
+        if (typeof v == 'undefined' || v == null || v == '') {
             this.shadowRoot.getElementById('root').classList.remove('hasInput')
         } else {
             this.shadowRoot.getElementById('root').classList.add('hasInput')
         }
     }
+
     get error() {
         return this.shadowRoot.getElementById('error').textContent
     }
     set error(v) {
         this.shadowRoot.getElementById('error').textContent = v
-        if (v != '') {
+        if (typeof v == 'undefined' || v == null || v == '') {
             this.shadowRoot.getElementById('root').classList.remove('hasError')
         } else {
             this.shadowRoot.getElementById('root').classList.add('hasError')
