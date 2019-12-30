@@ -6,7 +6,7 @@
     >
 */
 
-const xyz_comame_scriptFilePath = 'https://comame.xyz/assets/script/material-component'
+const xyz_comame_scriptFilePath = 'https://comame.xyz/assets/script/material-component/'
 
 class MaterialInputElement extends HTMLElement {
     constructor() {
