@@ -1,0 +1,89 @@
+#root * {
+    box-sizing: border-box;
+}
+#root {
+    padding: 0;
+    border: 2px solid transparent;
+    position: relative;
+}
+#input {
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: transparent;
+    font-size: 1rem;
+    outline: 0;
+    line-height: 1rem;
+}
+#label {
+    transition: top .1s ease-out, left .1s ease-out;
+    z-index: -1;
+    display: inline-block;
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    color: gray;
+    background-color: whilte;
+    padding: 0 .5rem;
+    line-height: 1rem;
+}
+
+#root.hasInput > #label {
+    z-index: 1;
+    top: -0.5rem;
+    left: 1rem;
+    color: gray;
+    background-color: white;
+}
+
+#root.focused {
+    border: 1px solid transparent;
+}
+#root.focused > #input {
+    border: 2px solid #4285f4;
+}
+#root.focused > #label {
+    z-index: 1;
+    top: -0.5rem;
+    left: 1rem;
+    color: #4285f4;
+    background-color: white;
+}
+
+#root > #error {
+    display: none;
+    padding: .2rem;
+    line-height: 1.8rem;
+}
+
+#root.hasError {
+    margin-bottom: 2rem;
+}
+#root.hasError > #input {
+    border: 1px solid #d93025;
+}
+#root.hasInput.hasError > #label {
+    color: #d93025;
+}
+#root.focused.hasError {
+    border: 1px solid transparent;
+}
+#root.focused.hasError > #input {
+    border: 2px solid #d93025;
+}
+#root.focused.hasError > #label {
+    color: #d93025
+}
+
+#root.hasError > #error {
+    display: block;
+    position: absolute;
+    color: #d93025;
+    top: calc(3rem + 2px);
+    left: 0;
+}
+#root.hasError.focused > #error {
+    top: calc(3rem + 3px);
+    left: 1px;
+}
