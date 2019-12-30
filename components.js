@@ -77,9 +77,9 @@ class MaterialInputElement extends HTMLElement {
     set value(v) {
         this.shadowRoot.getElementById('input').value = v
         if (v != '') {
-            this.shadowRoot.getElementById('root').classList.add('hasInput')
-        } else {
             this.shadowRoot.getElementById('root').classList.remove('hasInput')
+        } else {
+            this.shadowRoot.getElementById('root').classList.add('hasInput')
         }
     }
     get error() {
@@ -88,9 +88,9 @@ class MaterialInputElement extends HTMLElement {
     set error(v) {
         this.shadowRoot.getElementById('error').textContent = v
         if (v != '') {
-            this.shadowRoot.getElementById('root').classList.add('hasError')
-        } else {
             this.shadowRoot.getElementById('root').classList.remove('hasError')
+        } else {
+            this.shadowRoot.getElementById('root').classList.add('hasError')
         }
     }
 }
