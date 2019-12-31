@@ -36,6 +36,7 @@
     top: calc(-0.5rem - 1px);
     left: calc(.5rem - 1px);
     color: gray;
+    font-size: .8rem;
 }
 
 #root.focused {
