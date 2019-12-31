@@ -101,4 +101,56 @@ class MaterialInputElement extends HTMLElement {
     }
 }
 
+class MaterialButtonElement extends HTMLElement {
+    constructor() {
+        super()
+        const shadow = this.attachShadow({ mode: 'open' })
+        const root = document.createElement('div')
+        const slot = document.createElement('slot')
+        const button = document.createElement('button')
+        const style = document.createElement('link')
+
+        button.id = 'button'
+        slot.id = 'slot'
+
+        style.rel = 'stylesheet'
+        style.href = xyz_comame_scriptFilePath + 'material-button.css'
+
+        shadow.appendChild(root)
+        root.appendChild(button)
+        root.appendChild(style)
+        button.appendChild(slot)
+    }
+
+    static get observedAttributes() {
+        return [ 'disabled' ]
+    }
+
+    connectedCallback() {
+        this.disabled = this.getAttribute('disabled') != null
+    }
+
+    attributeChangedCallback(attributeName, oldValue, newValue) {
+        switch (attributeName) {
+            case 'disabled':
+                this.disabled = newValue != null
+                break
+        }
+    }
+
+    get disabled() {
+        const attr = this.shadowRoot.getElementById('button').getAttribute('disabled')
+        return attr != null
+    }
+
+    set disabled(v) {
+        if (v) {
+            this.shadowRoot.getElementById('button').setAttribute('disabled', '')
+        } else {
+            this.shadowRoot.getElementById('button').removeAttribute('disabled')
+        }
+    }
+}
+
 customElements.define('material-input', MaterialInputElement)
+customElements.define('material-button', MaterialButtonElement)

@@ -10,8 +10,16 @@
 
     <div>
         <h2>material-input</h2>
-        <material-input placeholder='メールアドレス'></material-input>
+        <material-input placeholder='placeholder'></material-input>
         <material-input placeholder='placeholder' error='error'></material-input>
+    </div>
+
+    <div>
+        <h2>material-button</h2>
+        <div>
+            <material-button>BUTTON</material-button>
+            <material-button disabled>DISABLED</material-button>
+        </div>
     </div>
 
     <a href='https://github.com/comame/Material-Web-Components' id='github'>View code on GitHub</a>
@@ -23,8 +31,13 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
+            align-items: center;
+            flex-direction: column;
             margin: 0;
             margin-top: 2rem;
+        }
+        body > div {
+            width: 30rem;
         }
         body > div > * {
             display: block;
