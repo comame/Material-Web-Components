@@ -18,14 +18,14 @@
     line-height: 1rem;
 }
 #label {
-    transition: top .1s ease-out, left .1s ease-out;
+    transition: top .1s ease-out, left .1s ease-out, font-size .1s ease-in-out;
     z-index: -1;
     display: inline-block;
     position: absolute;
     top: 1rem;
-    left: 1rem;
+    left: .5rem;
     color: gray;
-    background-color: whilte;
+    background-color: white;
     padding: 0 .5rem;
     line-height: 1rem;
 }
@@ -36,7 +36,6 @@
     top: calc(-0.5rem - 1px);
     left: calc(.5rem - 1px);
     color: gray;
-    background-color: white;
 }
 
 #root.focused {
@@ -49,8 +48,8 @@
     z-index: 1;
     top: -0.5rem;
     left: .5rem;
+    font-size: .8rem;
     color: #4285f4;
-    background-color: white;
 }
 
 #root > #error {
