@@ -30,6 +30,7 @@
     width: 100%;
     padding: 1rem;
     border: none;
+    line-height: 1rem;
     border-radius: 5px;
 
     background-color: var(--main-color);

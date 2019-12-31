@@ -1,7 +1,3 @@
-/*
-    <material-input placeholder=string id=string error=string>
-*/
-
 let xyz_comame_scriptFilePath
 for(const el of document.getElementsByTagName('script')) {
     if (el.src.endsWith('/components.js')) {
