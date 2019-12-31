@@ -29,6 +29,7 @@ class MaterialInputElement extends HTMLElement {
             root.classList.add('focused')
         }
         input.onblur = () => {
+            this.setAttribute('value', input.value.trim())
             const hasInput = Boolean(input.value)
             root.classList.remove('focused')
             if (hasInput) {

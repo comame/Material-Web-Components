@@ -8,6 +8,7 @@
 }
 #input {
     width: 100%;
+    transition: border-color 80ms ease-out;
     border: 1px solid lightgray;
     border-radius: 5px;
     padding: 1rem;
@@ -22,7 +23,7 @@
     display: inline-block;
     position: absolute;
     top: 1rem;
-    left: 1.5rem;
+    left: 1rem;
     color: gray;
     background-color: whilte;
     padding: 0 .5rem;
@@ -30,9 +31,10 @@
 }
 
 #root.hasInput > #label {
+    transition: none;
     z-index: 1;
-    top: -0.5rem;
-    left: 1rem;
+    top: calc(-0.5rem - 1px);
+    left: calc(.5rem - 1px);
     color: gray;
     background-color: white;
 }
@@ -46,7 +48,7 @@
 #root.focused > #label {
     z-index: 1;
     top: -0.5rem;
-    left: 1rem;
+    left: .5rem;
     color: #4285f4;
     background-color: white;
 }
