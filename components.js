@@ -109,6 +109,13 @@ class MaterialButtonElement extends HTMLElement {
         button.id = 'button'
         slot.id = 'slot'
 
+        this.addEventListener('click', (e) => {
+            console.log('initial')
+            if (this.hasAttribute('disabled')) {
+                e.stopPropagation()
+            }
+        }, true)
+
         style.rel = 'stylesheet'
         style.href = xyz_comame_scriptFilePath + 'material-button.css'
 

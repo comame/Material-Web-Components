@@ -5,26 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Demo</title>
-</head>
-<body>
 
-    <div>
-        <h2>material-input</h2>
-        <material-input placeholder='placeholder'></material-input>
-        <material-input placeholder='placeholder' error='error'></material-input>
-    </div>
-
-    <div>
-        <h2>material-button</h2>
-        <div>
-            <material-button>BUTTON</material-button>
-            <material-button disabled>DISABLED</material-button>
-        </div>
-    </div>
-
-    <a href='https://github.com/comame/Material-Web-Components' id='github'>View code on GitHub</a>
-
-    <script src='https://comame.xyz/assets/script/material-component/components.js'></script>
     <style>
         body {
             position: relative;
@@ -52,5 +33,33 @@
             margin: 1rem;
         }
     </style>
+    <script defer src='https://comame.xyz/assets/script/material-component/components.js'></script>
+</head>
+<body>
+
+    <div>
+        <h2>material-input</h2>
+        <material-input placeholder='placeholder'></material-input>
+        <material-input placeholder='placeholder' error='error'></material-input>
+    </div>
+
+    <div>
+        <h2>material-button</h2>
+        <div>
+            <material-button>BUTTON</material-button>
+            <material-button disabled>DISABLED</material-button>
+
+            <script>
+                document.querySelectorAll('material-button').forEach(it => {
+                    it.addEventListener('click', () => {
+                        it.textContent = 'CLICKED'
+                    })
+                })
+            </script>
+        </div>
+    </div>
+
+    <a href='https://github.com/comame/Material-Web-Components' id='github'>View code on GitHub</a>
+
 </body>
 </html>
