@@ -14,8 +14,7 @@
             justify-content: start;
             align-items: center;
             flex-direction: column;
-            margin: 0;
-            margin-top: 2rem;
+            margin: 2rem 0;
         }
         body > div {
             min-width: 15rem;
@@ -23,12 +22,11 @@
             max-width: 40rem;
         }
         body > div > * {
-            display: block;
             margin-bottom: 1rem;
         }
         #github {
             position: absolute;
-            bottom: 0;
+            bottom: -2rem;
             right: 0;
             margin: 1rem;
         }
@@ -46,17 +44,45 @@
     <div>
         <h2>material-button</h2>
         <div>
-            <material-button>BUTTON</material-button>
-            <material-button disabled>DISABLED</material-button>
+            <material-button class='button'>BUTTON</material-button class='button'>
+            <material-button class='button' disabled>DISABLED</material-button>
 
             <script>
-                document.querySelectorAll('material-button').forEach(it => {
+                document.querySelectorAll('.button').forEach(it => {
                     it.addEventListener('click', () => {
                         it.textContent = 'CLICKED'
                     })
                 })
             </script>
         </div>
+    </div>
+
+    <div>
+        <h2>material-dialog</h2>
+        <material-dialog class='dialog'>Dialog text.</material-dialog>
+        <material-dialog class='dialog' select='YES,NO'>Dialog text.</material-dialog>
+        <material-button id='dialog-float'>FLOAT DIALOG</material-button>
+
+        <script>
+            document.querySelectorAll('.dialog').forEach(it => {
+                it.addEventListener('dialog-close', (e) => {
+                    window.alert('Dialog closed with ' + e.text)
+                })
+            })
+            document.getElementById('dialog-float').onclick = () => {
+                const dialog = document.createElement('material-dialog')
+                dialog.textContent = 'This is a floating dialog.'
+                dialog.setAttribute('float', '')
+                document.body.appendChild(dialog)
+
+                dialog.addEventListener('dialog-close', (e) => {
+                    window.alert('Dialog closed with ' + e.text)
+                })
+                dialog.addEventListener('dialog-cancel', () => {
+                    window.alert('Dialog canceled.')
+                })
+            }
+        </script>
     </div>
 
     <a href='https://github.com/comame/Material-Web-Components' id='github'>View code on GitHub</a>

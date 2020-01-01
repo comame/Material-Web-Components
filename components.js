@@ -110,7 +110,6 @@ class MaterialButtonElement extends HTMLElement {
         slot.id = 'slot'
 
         this.addEventListener('click', (e) => {
-            console.log('initial')
             if (this.hasAttribute('disabled')) {
                 e.stopPropagation()
             }
@@ -155,5 +154,82 @@ class MaterialButtonElement extends HTMLElement {
     }
 }
 
+class MaterialDialog extends HTMLElement {
+    constructor() {
+        super()
+        const shadow = this.attachShadow({ mode: 'open' })
+        const root = document.createElement('div')
+
+        const paragraph = document.createElement('p')
+        const buttonWrap = document.createElement('div')
+        const style = document.createElement('link')
+
+        root.id = 'root'
+        paragraph.id = 'p'
+        buttonWrap.id = 'button-wrap'
+
+        style.rel = 'stylesheet'
+        style.href = xyz_comame_scriptFilePath + 'material-dialog.css'
+
+        paragraph.appendChild(document.createElement('slot'))
+
+        root.appendChild(paragraph)
+        root.appendChild(buttonWrap)
+        root.appendChild(style)
+
+        shadow.appendChild(root)
+    }
+
+    connectedCallback() {
+        if (this.hasAttribute('float')) {
+            if (MaterialDialog.hasFloatDialog) {
+                this.remove()
+                throw 'Already shown.'
+            }
+            MaterialDialog.hasFloatDialog = true
+
+            const bodyHide = document.createElement('div')
+            bodyHide.id = 'xyz-comame-material_body-hide'
+
+            const style = document.createElement('link')
+            style.rel = 'stylesheet'
+            style.href = xyz_comame_scriptFilePath + 'body-cover.css'
+
+            bodyHide.appendChild(style)
+            document.body.appendChild(bodyHide)
+
+            bodyHide.onclick = () => {
+                this.dispatchEvent(new CustomEvent('dialog-cancel'))
+                MaterialDialog.hasFloatDialog = false
+                bodyHide.remove()
+                this.remove()
+            }
+
+            this.addEventListener('dialog-close', () => {
+                bodyHide.remove()
+                MaterialDialog.hasFloatDialog = false
+            }, true)
+
+            this.shadowRoot.getElementById('root').setAttribute('float', '')
+        }
+
+        const selectsStr = this.getAttribute('select') || 'OK'
+        const selects = selectsStr.split(',')
+
+        for (const select of selects) {
+            const button = document.createElement('button')
+            const event = new CustomEvent('dialog-close')
+            event.text = select
+            button.onclick = () => {
+                this.dispatchEvent(event)
+                this.remove()
+            }
+            button.textContent = select
+            this.shadowRoot.getElementById('button-wrap').appendChild(button)
+        }
+    }
+}
+
 customElements.define('material-input', MaterialInputElement)
 customElements.define('material-button', MaterialButtonElement)
+customElements.define('material-dialog', MaterialDialog)

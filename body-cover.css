@@ -1,0 +1,12 @@
+body > div#xyz-comame-material_body-hide {
+    height: 100vh;
+    width: 100vw;
+    max-width: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+
+    transition: background-color .5s ease-out
+}
