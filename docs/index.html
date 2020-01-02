@@ -66,7 +66,7 @@
         <script>
             document.querySelectorAll('.dialog').forEach(it => {
                 it.addEventListener('dialog-close', (e) => {
-                    window.alert('Dialog closed with ' + e.text)
+                    console.log('Dialog closed with ' + e.text)
                 })
             })
             document.getElementById('dialog-float').onclick = () => {
@@ -76,10 +76,10 @@
                 document.body.appendChild(dialog)
 
                 dialog.addEventListener('dialog-close', (e) => {
-                    window.alert('Dialog closed with ' + e.text)
+                    console.log('Dialog closed with ' + e.text)
                 })
                 dialog.addEventListener('dialog-cancel', () => {
-                    window.alert('Dialog canceled.')
+                    console.log('Dialog canceled.')
                 })
             }
         </script>
